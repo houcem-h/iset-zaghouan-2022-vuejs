@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 Examples</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>Montant HT: {{ montantHT }}</p>
+      <p>Montant TVA: {{ montantHT * tauxTVA / 100 }}</p>
+      <p>Montant TTC: {{ montantTTC }}</p>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            montantHT: 4500,
+            tauxTVA: 19,
+          };
+        },
+        computed: {
+          montantTTC() {
+            return this.montantHT * (1 + this.tauxTVA / 100);
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
