@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 Examples</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <label>Your message</label>
+      <input
+        v-model="message"
+        type="text"
+        placeholder="enter your message here"
+      />
+      <p v-show="writing">Writing ...</p>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: "",
+            writing: false,
+            timeout: null,
+          };
+        },
+        watch: {
+          message() {
+            if (this.writing) {
+              this.writing = false;
+              clearTimeout(this.timeout);
+            } else {
+              this.writing = true;
+              this.timeout = setTimeout(() => {
+                this.writing = false;
+              }, 1000);
+            }
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
