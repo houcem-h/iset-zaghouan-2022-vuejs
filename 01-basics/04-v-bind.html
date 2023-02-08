@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 Examples</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <p>Visit Vue.JS official website <a v-bind:href="siteURL">here</a></p>
+      <p>Visit Vue.JS official website <a :href="siteURL">here</a></p> -->
+      <p>
+        Visit Vue.JS official website <a :href="'https://'+siteURL">here</a>
+      </p>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            // siteURL: "https://vuejs.org",
+            siteURL: "vuejs.org",
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
