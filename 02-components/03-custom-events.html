@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 Examples</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h3>Counter: {{ counter }}</h3>
+      <button-component @inc="incrementCounter"></button-component>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        methods: {
+          incrementCounter(i) {
+            this.counter += i;
+          },
+        },
+      });
+      app.component("button-component", {
+        template: `
+          <input type="number" v-model="step">
+          <button @click="increment">Increment</button>`,
+        data() {
+          return {
+            step: 1,
+          };
+        },
+        $emits: ["inc"],
+        methods: {
+          increment() {
+            this.$emit("inc", this.step);
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
