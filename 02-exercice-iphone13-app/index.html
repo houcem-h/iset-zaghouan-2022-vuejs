@@ -36,9 +36,10 @@
               v-for="variant in variants"
               :key="variant.id"
               @mouseover="updateImage(variant.image)"
-            >
-              {{ variant.color }}
-            </div>
+              class="color-circle"
+              :style="{ backgroundColor: variant.color }"
+            ></div>
+            <br />
             <button @click="cart++" class="button">Add to cart</button>
           </div>
         </div>

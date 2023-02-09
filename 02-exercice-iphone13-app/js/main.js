@@ -23,7 +23,7 @@ const app = Vue.createApp({
         },
         {
           id: "iphone-13-midnight",
-          color: "midnight",
+          color: "black",
           image: "./assets/images/iphone-13-midnight.png",
         },
         {
