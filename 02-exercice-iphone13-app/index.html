@@ -24,6 +24,9 @@
               Almost sold (Only {{ quantity }} available)
             </p>
             <p v-else>Out of Stock</p>
+            <ul>
+              <li v-for="spec in specs">{{ spec }}</li>
+            </ul>
           </div>
         </div>
       </div>
