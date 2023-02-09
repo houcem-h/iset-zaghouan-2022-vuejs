@@ -56,7 +56,7 @@ app.component("navbar-component", {
   template: `<div class="nav-bar"></div>`,
 });
 app.component("cart-component", {
-  template: `<div class="cart"><i class="bi bi-cart3"></i> &nbsp;&nbsp;{{ cart }}</div>`,
-  props: ["cart"],
+  template: `<div class="cart"><i class="bi bi-cart3"></i> &nbsp;&nbsp;{{ panier }}</div>`,
+  props: ["panier"],
 });
 app.mount("#app");
