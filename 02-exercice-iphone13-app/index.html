@@ -33,14 +33,21 @@
               <li v-for="spec in specs">{{ spec }}</li>
             </ul>
             <div
-              v-for="variant in variants"
+              v-for="(variant, id) in variants"
               :key="variant.id"
-              @mouseover="updateImage(variant.image)"
+              @mouseover="activeVariant = id"
               class="color-circle"
               :style="{ backgroundColor: variant.color }"
             ></div>
             <br />
-            <button @click="cart++" class="button">Add to cart</button>
+            <button
+              @click="cart++"
+              class="button"
+              :class="{ disabledButton: quantity == 0 ? true : false }"
+              :disabled="quantity == 0 ? true : false"
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
