@@ -16,41 +16,7 @@
     <div id="app">
       <navbar-component></navbar-component>
       <cart-component :panier="cart"></cart-component>
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img :src="image" :alt="product" />
-          </div>
-          <div class="product-info">
-            <h1>{{ product }}</h1>
-            <p>{{ description }}</p>
-            <p v-if="quantity > 5">In Stock</p>
-            <p v-else-if="quantity > 0">
-              Almost sold (Only {{ quantity }} available)
-            </p>
-            <p v-else>Out of Stock</p>
-            <ul>
-              <li v-for="spec in specs">{{ spec }}</li>
-            </ul>
-            <div
-              v-for="(variant, id) in variants"
-              :key="variant.id"
-              @mouseover="activeVariant = id"
-              class="color-circle"
-              :style="{ backgroundColor: variant.color }"
-            ></div>
-            <br />
-            <button
-              @click="cart++"
-              class="button"
-              :class="{ disabledButton: quantity == 0 ? true : false }"
-              :disabled="quantity == 0 ? true : false"
-            >
-              Add to cart
-            </button>
-          </div>
-        </div>
-      </div>
+      <product-component @add-to-cart="cart++"></product-component>
     </div>
     <script src="./js/main.js" type="module"></script>
   </body>
