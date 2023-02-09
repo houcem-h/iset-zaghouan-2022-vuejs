@@ -15,7 +15,7 @@
   <body>
     <div id="app">
       <navbar-component></navbar-component>
-      <div class="cart"><i class="bi bi-cart3"></i> &nbsp;&nbsp;{{ cart }}</div>
+      <cart-component :cart="cart"></cart-component>
       <div class="product-display">
         <div class="product-container">
           <div class="product-image">
