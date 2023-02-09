@@ -15,7 +15,29 @@ const app = Vue.createApp({
         "6.1-inch Super Retina XDR display",
         "IP68 water resistance",
       ],
+      variants: [
+        {
+          id: "iphone-13-blue",
+          color: "blue",
+          image: "./assets/images/iphone-13-blue.png",
+        },
+        {
+          id: "iphone-13-midnight",
+          color: "midnight",
+          image: "./assets/images/iphone-13-midnight.png",
+        },
+        {
+          id: "iphone-13-red",
+          color: "red",
+          image: "./assets/images/iphone-13-red.png",
+        },
+      ],
     };
+  },
+  methods: {
+    updateImage(imageURL) {
+      this.image = imageURL;
+    },
   },
 });
 app.mount("#app");
