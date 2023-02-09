@@ -39,9 +39,8 @@ const product = {
   data() {
     return {
       activeVariant: 0,
-      product: "iPhone 13 Pro",
-      description:
-        "The iPhone 13 Pro is the most powerful iPhone ever. It features a 6.1-inch Super Retina XDR display, a 12MP triple camera system, and a 12MP TrueDepth front camera.",
+      product: null,
+      description: null,
       // image: "./assets/images/iphone-13-blue.png",
       // quantity: 3,
       specs: [
@@ -52,26 +51,7 @@ const product = {
         "6.1-inch Super Retina XDR display",
         "IP68 water resistance",
       ],
-      variants: [
-        {
-          id: "iphone-13-blue",
-          color: "blue",
-          image: "./assets/images/iphone-13-blue.png",
-          quantity: 3,
-        },
-        {
-          id: "iphone-13-midnight",
-          color: "black",
-          image: "./assets/images/iphone-13-midnight.png",
-          quantity: 7,
-        },
-        {
-          id: "iphone-13-red",
-          color: "red",
-          image: "./assets/images/iphone-13-red.png",
-          quantity: 0,
-        },
-      ],
+      variants: null,
     };
   },
   emits: ["addToCart"],
@@ -87,6 +67,22 @@ const product = {
     quantity() {
       return this.variants[this.activeVariant].quantity;
     },
+  },
+  methods: {
+    fetchProducts() {
+      axios
+        .get("http://127.0.0.1:8000/api/products")
+        .then((response) => {
+          console.log(response.data[0]);
+          this.product = response.data[0].product;
+          this.description = response.data[0].description;
+          this.variants = JSON.parse(response.data[0].variants);
+        })
+        .catch((error) => console.log(error));
+    },
+  },
+  created() {
+    this.fetchProducts();
   },
 };
 
